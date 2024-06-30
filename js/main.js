@@ -33,9 +33,10 @@ $(document).ready(function(){
             nome: 'Por favor, insira o seu nome'
         },
         submitHandler: function(form) {
-            console.log(form)
+            alert("Sua requisição foi enviada para análise, parabéns pela aquisição!");
+            form.reset();
         },
-        invalidHandler: function(evento, validador) {
+        invalidHandler: function(form, validador) {
             let camposIncorretos = validador.numberOfInvalids();
             if (camposIncorretos) {
                 alert(`Existem ${camposIncorretos} campos incorretos`)
@@ -46,6 +47,8 @@ $(document).ready(function(){
     $('.lista-veiculos button').click(function() {
         const destino = $('#contato');
         const nomeVeiculo = $(this).parent().find('h3').text();
+
+        $('#veiculo-interesse').val(nomeVeiculo);
 
         $('html').animate({
             scrollTop: destino.offset().top
